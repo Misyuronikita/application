@@ -1,0 +1,41 @@
+#include<iostream>
+#include<iomanip>
+#include<conio.h>
+
+using namespace std;
+
+int hours = 0, minutes = 0, seconds = 0;
+
+void displayClock() {
+	system("cls");
+	cout << endl;
+	cout << setfill(' ') << setw(55) << "        TIMER        \n";
+	cout << setfill(' ') << setw(55) << "-----------------------\n";
+	cout << setfill(' ') << setw(32);
+	cout << "| " << setfill('0') << setw(2) << hours << "hrs | ";
+	cout << setfill('0') << setw(2) << minutes << "min | ";
+	cout << setfill('0') << setw(2) << seconds << "sec | " << endl;
+	cout << setfill(' ') << setw(55) << "-----------------------\n";
+}
+
+void timer() {
+	while (true) {
+		displayClock();
+		_sleep(1000);
+		seconds++;
+		if (seconds == 60) {
+			minutes++;
+			if (minutes == 60) {
+				hours++;
+				minutes = 0;	
+			}
+			seconds = 0;
+		}
+	}
+}
+
+int main() {
+	timer();
+	system("pause");
+	return 0;
+}
